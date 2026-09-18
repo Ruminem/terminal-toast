@@ -13,6 +13,7 @@ assert.strictEqual(elapsed(5400000), '1h 30m');
 
 assert.strictEqual(body('  npm   run build  ', 95000), 'npm run build · 1m 35s');
 assert.ok(body('x'.repeat(100), 1000).startsWith('x'.repeat(59) + '…'));
+assert.strictEqual(body('npm run build', 95000, 'terminal-toast'), 'terminal-toast · npm run build · 1m 35s');
 
 // Every translated string must exist in every translation, or a Korean window falls back to English.
 const read = (f) => JSON.parse(fs.readFileSync(f, 'utf8'));

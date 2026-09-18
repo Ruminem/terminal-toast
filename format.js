@@ -12,13 +12,14 @@ function elapsed(ms) {
 }
 
 /**
- * One line for the notification: what ran and how long it took.
- * @param {string} command @param {number} ms
+ * One line for the notification: where it ran, what ran, and how long it took.
+ * The folder comes first because with several windows open that is the part you look for.
+ * @param {string} command @param {number} ms @param {string} [where] workspace name, absent outside one
  */
-function body(command, ms) {
+function body(command, ms, where) {
   const one = command.trim().replace(/\s+/g, ' ');
   const short = one.length > 60 ? one.slice(0, 59) + '…' : one;
-  return `${short} · ${elapsed(ms)}`;
+  return `${where ? where + ' · ' : ''}${short} · ${elapsed(ms)}`;
 }
 
 module.exports = { elapsed, body };

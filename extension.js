@@ -15,7 +15,7 @@ function notify(command, exitCode, ms) {
   // Shell integration reports undefined when it cannot tell; treat that as finished, not failed.
   const ok = exitCode === 0 || exitCode === undefined;
   const title = ok ? vscode.l10n.t('Command finished') : vscode.l10n.t('Command failed ({0})', String(exitCode));
-  const text = body(command, ms);
+  const text = body(command, ms, vscode.workspace.name);
   toast(title, text, log);
   const line = `${title} — ${text}`;
   if (ok) vscode.window.showInformationMessage(line);

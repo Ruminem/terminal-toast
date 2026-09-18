@@ -2,7 +2,7 @@
   "name": "terminal-toast",
   "displayName": "Terminal Toast",
   "description": "Notifies you when a long terminal command finishes while you are looking at another window.",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "publisher": "Ruminem",
   "icon": "icon.png",
   "license": "MIT",
