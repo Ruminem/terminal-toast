@@ -45,7 +45,7 @@ No dependencies to install.
 ```sh
 npm test
 npm run package   # produces terminal-toast-<version>.vsix
-code --install-extension terminal-toast-0.1.0.vsix
+code --install-extension terminal-toast-0.1.1.vsix
 ```
 
 ## License
@@ -98,7 +98,7 @@ Apache-2.0
 ```sh
 npm test
 npm run package   # terminal-toast-<version>.vsix 생성
-code --install-extension terminal-toast-0.1.0.vsix
+code --install-extension terminal-toast-0.1.1.vsix
 ```
 
 ### 라이선스

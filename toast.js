@@ -24,16 +24,17 @@ $toast = New-Object Windows.UI.Notifications.ToastNotification $xml
 [Windows.UI.Notifications.ToastNotificationManager]::CreateToastNotifier('${APP_ID}').Show($toast)
 `;
 
-/** @param {string} title @param {string} text */
-function toast(title, text) {
-  if (process.platform !== 'win32') return;
+/** @param {string} title @param {string} text @param {{info: Function, error: Function}} [log] */
+function toast(title, text, log) {
+  if (process.platform !== 'win32') return log?.info('toast: not Windows, skipped');
   execFile('powershell.exe', ['-NoProfile', '-NonInteractive', '-Command', SCRIPT], {
     env: { ...process.env, TT_TITLE: title, TT_BODY: text },
     windowsHide: true,
     timeout: 10000,
-  }, (err) => {
+  }, (err, _out, stderr) => {
     // The in-app notification still fires, so a failed toast is worth a log line, not a popup.
-    if (err) console.error('terminal-toast: toast failed -', err.message.split('\n')[0]);
+    if (err) log?.error(`toast failed: ${err.message.split('\n')[0]} ${stderr || ''}`.trim());
+    else log?.info('toast sent');
   });
 }
 
