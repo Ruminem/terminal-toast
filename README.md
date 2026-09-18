@@ -82,7 +82,7 @@ code --install-extension terminal-toast-0.1.1.vsix
 
 ## License
 
-Apache-2.0
+MIT
 
 ---
 
@@ -167,4 +167,4 @@ code --install-extension terminal-toast-0.1.1.vsix
 
 ### 라이선스
 
-Apache-2.0
+MIT

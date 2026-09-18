@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: Apache-2.0
+// SPDX-License-Identifier: MIT
 'use strict';
 const vscode = require('vscode');
 const { body } = require('./format');
