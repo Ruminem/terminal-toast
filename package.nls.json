@@ -1,0 +1,5 @@
+{
+  "command.test": "Terminal Toast: Send a Test Notification",
+  "config.minSeconds": "Only notify about commands that took at least this many seconds.",
+  "config.unfocusedOnly": "Only notify while the VS Code window is in the background."
+}

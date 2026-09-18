@@ -1,0 +1,54 @@
+{
+  "name": "terminal-toast",
+  "displayName": "Terminal Toast",
+  "description": "Notifies you when a long terminal command finishes while you are looking at another window.",
+  "version": "0.0.1",
+  "publisher": "Ruminem",
+  "license": "Apache-2.0",
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "terminal",
+    "notification",
+    "toast",
+    "build",
+    "shell integration"
+  ],
+  "engines": {
+    "vscode": "^1.93.0"
+  },
+  "main": "./extension.js",
+  "l10n": "./l10n",
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "terminalToast.test",
+        "title": "%command.test%"
+      }
+    ],
+    "configuration": {
+      "title": "Terminal Toast",
+      "properties": {
+        "terminalToast.minSeconds": {
+          "type": "number",
+          "default": 30,
+          "minimum": 1,
+          "description": "%config.minSeconds%"
+        },
+        "terminalToast.unfocusedOnly": {
+          "type": "boolean",
+          "default": true,
+          "description": "%config.unfocusedOnly%"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "test": "node test.js",
+    "package": "npx --yes @vscode/vsce@3 package --allow-missing-repository"
+  }
+}

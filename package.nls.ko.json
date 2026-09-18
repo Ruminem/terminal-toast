@@ -1,0 +1,5 @@
+{
+  "command.test": "Terminal Toast: 알림 보내 보기",
+  "config.minSeconds": "이 초 수 이상 걸린 명령만 알림.",
+  "config.unfocusedOnly": "VS Code 창이 백그라운드일 때만 알림."
+}
