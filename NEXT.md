@@ -1,3 +1,3 @@
-- 여기까지 됨: MIT 로 바꿔 GitHub public 저장소(https://github.com/Ruminem/terminal-toast)에 올리고 v0.1.2 까지 릴리스·마켓플레이스 배포 끝냄. 아이콘은 `npm run icon` 으로 만듦(vscode-assist 렌더러를 가져옴). 프로필 README 와 vsx-tools 설치 페이지에도 추가함
+- 여기까지 됨: MIT 로 바꿔 GitHub public 저장소(https://github.com/Ruminem/terminal-toast)에 올리고 v0.1.3 까지 릴리스·마켓플레이스 배포 끝냄. 아이콘은 `npm run icon` 으로 만듦(vscode-assist 렌더러를 가져옴). 프로필 README 와 vsx-tools 설치 페이지에도 추가함. CHANGELOG.md 를 두고 전역 규칙에도 넣음 — 다른 확장 4개는 아직 없음
 - 다음 할 것: 회사 PC 에서 마켓플레이스로 설치해 써 보기. 실패한 빌드 토스트를 구분할지 정하기
 - 막힌 것: 없음. 태스크 방식의 대가로 빌드할 때 패널이 터미널 탭으로 넘어감 — CMake Tools 가 태스크를 다시 만들면서 presentation 을 버리므로 막을 수 없음. 거슬리면 대안은 프로세스 감시(cmake.exe·ninja.exe 가 사라지는 것을 보고 알림)
