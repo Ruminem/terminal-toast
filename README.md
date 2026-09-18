@@ -21,9 +21,41 @@ decorations, shell integration is off for that shell and nothing will be reporte
 [Terminal Shell Integration](https://code.visualstudio.com/docs/terminal/shell-integration).
 
 The third row is a real gap and no extension can close it. A build an extension runs by
-itself, writing only to its Output channel, is invisible to the rest of VS Code. CMake Tools
-does this by default; setting `cmake.buildTask` to `true` makes it build through a task,
-which this extension does see.
+itself, writing only to its Output channel, is invisible to the rest of VS Code.
+
+## CMake Tools
+
+CMake Tools builds through its own process by default, so its builds are the third row.
+Two things move them onto the task path, where they are announced:
+
+`.vscode/settings.json`
+
+```json
+{ "cmake.buildTask": true }
+```
+
+`.vscode/tasks.json`
+
+```json
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "cmake",
+            "label": "CMake: build",
+            "command": "build",
+            "preset": "${command:cmake.activeBuildPresetName}",
+            "group": { "kind": "build", "isDefault": true }
+        }
+    ]
+}
+```
+
+The `preset` line matters in a project with `CMakePresets.json`: CMake Tools only picks a
+task whose preset matches the active one, or one that carries that exact command
+substitution. Without it, it falls back to the internal process and says nothing about it.
+The build output then goes to a terminal instead of the Output panel — that is what makes
+it visible.
 
 The toast goes through PowerShell, so it is Windows only. Everywhere else the VS Code
 notification still appears.
@@ -76,8 +108,40 @@ Apache-2.0
 [Terminal Shell Integration](https://code.visualstudio.com/docs/terminal/shell-integration) 참고.
 
 셋째 줄은 진짜 빈틈이고 어떤 확장도 못 메움. 확장이 스스로 돌려서 자기 출력 패널에만 찍는
-빌드는 VS Code의 다른 부분에서 아예 안 보임. CMake Tools가 기본값이 그럼. `cmake.buildTask`를
-`true`로 두면 태스크로 빌드하게 되고, 그러면 이 확장이 볼 수 있음.
+빌드는 VS Code의 다른 부분에서 아예 안 보임.
+
+### CMake Tools
+
+CMake Tools는 기본값이 자기 프로세스로 빌드하므로 그 빌드가 셋째 줄에 해당함. 두 가지를 넣으면
+태스크 경로로 옮겨지고, 그러면 알림이 뜸.
+
+`.vscode/settings.json`
+
+```json
+{ "cmake.buildTask": true }
+```
+
+`.vscode/tasks.json`
+
+```json
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "cmake",
+            "label": "CMake: build",
+            "command": "build",
+            "preset": "${command:cmake.activeBuildPresetName}",
+            "group": { "kind": "build", "isDefault": true }
+        }
+    ]
+}
+```
+
+`CMakePresets.json`을 쓰는 프로젝트에서는 `preset` 줄이 중요함. CMake Tools는 지금 프리셋과
+이름이 같은 태스크나, 저 명령 치환을 그대로 가진 태스크만 고름. 없으면 내부 프로세스로 조용히
+돌아가고 아무 말도 안 함. 이렇게 하면 빌드 출력이 출력 패널 대신 터미널로 감 — 보이게 되는
+대가임.
 
 토스트는 PowerShell을 거치므로 윈도우에서만 뜸. 다른 OS에서는 VS Code 알림만 뜸.
 
