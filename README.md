@@ -77,7 +77,7 @@ No dependencies to install.
 ```sh
 npm test
 npm run package   # produces terminal-toast-<version>.vsix
-code --install-extension terminal-toast-0.1.1.vsix
+code --install-extension terminal-toast-0.1.2.vsix
 ```
 
 ## License
@@ -162,7 +162,7 @@ CMake Tools는 기본값이 자기 프로세스로 빌드하므로 그 빌드가
 ```sh
 npm test
 npm run package   # terminal-toast-<version>.vsix 생성
-code --install-extension terminal-toast-0.1.1.vsix
+code --install-extension terminal-toast-0.1.2.vsix
 ```
 
 ### 라이선스
